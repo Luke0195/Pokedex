@@ -23,6 +23,7 @@ body{
   max-width: 910px;
   margin: 0 auto;
   padding: 10px;
+
 }
 
 body , input , button{
