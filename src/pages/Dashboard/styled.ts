@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import {shade} from 'polished';
 
 export const Title = styled.h1`
   margin: 30px 0;
@@ -43,7 +44,29 @@ export const Form = styled.form`
    font-size: 15px;
    font-weight:bold;
    text-transform: uppercase;
+   transition: background 0.8s ease-out;
+
+   &:hover{
+     background: ${shade(0.1, '#B30049')};
+   }
 
  }
 `
 
+export const Pokemons = styled.div`
+  margin-top: 80px;
+
+ div{
+   width: 100%;
+   max-width: 235px;
+   background:#a1895d;
+
+
+   header{
+     display:flex;
+     justify-content: space-between;
+   }
+ }
+
+
+`;
