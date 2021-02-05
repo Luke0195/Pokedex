@@ -24,6 +24,7 @@ body{
   margin: 0 auto;
   padding: 10px;
 
+
 }
 
 body , input , button{
