@@ -19,7 +19,7 @@ export const Title = styled.h1`
 export const Form = styled.form`
  width: 100%;
  max-width: 700px;
- margin: 50px auto;
+ margin: 50px auto 10px auto;
  display:flex;
  align-items:center;
  justify-content:center;
@@ -55,10 +55,9 @@ export const Form = styled.form`
 
 export const Pokemons = styled.div`
   margin-top: 80px;
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 25px;
 
 
 
@@ -66,7 +65,7 @@ export const Pokemons = styled.div`
 
  div{
    width: 100%;
-   max-width: 235px;
+   max-width: 200px;
    background:#303030;
    border-radius: 8px;
    border: 3px solid #ccac60;
@@ -109,8 +108,8 @@ export const Pokemons = styled.div`
    }
 
    img{
-     width: 170px;
-     height: 170px;
+     width: 100px;
+     height: 100px;
      margin: 15px 0;
    }
 
@@ -144,3 +143,17 @@ export const Pokemons = styled.div`
 
 
 `;
+
+
+export const Error = styled.div`
+width: 100%;
+max-width: 700px;
+margin: 8px auto;
+background:#d18782;
+padding: 16px;
+border-radius: 6px;
+color:#fff;
+
+
+
+`
