@@ -1,5 +1,10 @@
-import styled from 'styled-components';
+import styled, {css} from 'styled-components';
 import {shade} from 'polished';
+
+
+interface FormProps{
+  inputError: boolean;
+}
 
 export const Title = styled.h1`
   margin: 30px 0;
@@ -16,7 +21,7 @@ export const Title = styled.h1`
 `;
 
 
-export const Form = styled.form`
+export const Form = styled.form<FormProps>`
  width: 100%;
  max-width: 700px;
  margin: 50px auto 10px auto;
@@ -27,13 +32,23 @@ export const Form = styled.form`
   flex:1;
   height: 53px;
   color: #1a1a1d;
+  border: 2px solid transparent;
   padding-left: 8px;
   border-radius: 4px 0 0 4px;
   border: 0;
+
+  ${(props) => props.inputError &&  css`
+   border: 2px solid #b30049;
+
+ `}
   &::placeholder{
     color:#a8a8d8;
   }
  }
+
+
+
+
  button{
    width: 234px;
    height: 53px;
@@ -59,6 +74,10 @@ export const Pokemons = styled.div`
   grid-template-columns: 1fr 1fr 1fr;
   gap: 25px;
 
+a{
+  text-decoration:none;
+}
+
 
 
 
@@ -73,6 +92,13 @@ export const Pokemons = styled.div`
    flex-direction:column;
    align-items:center;
    margin: 8px;
+   transition: transform 0.8s ease-out;
+   cursor: pointer;
+   &:hover{
+     transform: scale(1.1);
+   }
+
+
 
   &:last-child{
     align-self: flex-end;
@@ -109,7 +135,7 @@ export const Pokemons = styled.div`
 
    img{
      width: 100px;
-     height: 100px;
+     height: 110px;
      margin: 15px 0;
    }
 
