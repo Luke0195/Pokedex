@@ -9,7 +9,7 @@ const Routes:React.FC  =() =>{
     <>
       <Switch>
         <Route component={Dashbord} path="/" exact  />
-        <Route component={Pokemon} path="/pokemon" />
+        <Route component={Pokemon} path="/pokemon/:id" />
       </Switch>
 
     </>

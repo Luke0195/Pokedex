@@ -23,11 +23,15 @@ export const Title = styled.h1`
 
 export const Form = styled.form<FormProps>`
  width: 100%;
- max-width: 700px;
+ max-width:700px;
  margin: 50px auto 10px auto;
  display:flex;
  align-items:center;
  justify-content:center;
+
+ input, button{
+   height:45px;
+ }
  input{
   flex:1;
   height: 53px;
