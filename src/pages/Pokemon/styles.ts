@@ -99,10 +99,16 @@ width: 100%;
  }
 
  ul{
+
+
    width: 100%;
+   max-width: 300px;
+   margin: 0 auto;
    list-style:none;
-   display:grid;
-   grid-template-columns: 1fr 1fr 1fr;
+   display:flex;
+   flex-flow: row wrap;
+   align-items:center;
+   justify-content: space-evenly;
    margin-top: 8px;
 
    li{
