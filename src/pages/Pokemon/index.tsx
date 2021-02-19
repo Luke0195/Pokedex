@@ -1,11 +1,14 @@
 import React, {useState,useEffect} from 'react';
-import {useRouteMatch} from 'react-router-dom'
+import {get} from 'lodash';
+import {FaGhost} from 'react-icons/fa';
+import {useRouteMatch} from 'react-router-dom';
 import api from '../../services/api';
-import {Container, PokemonContent, PokemonStatus} from './styles'
-
+import {Container, PokemonContent} from './styles'
+/*
 interface PokemonState{
   order: number;
   base_stat: number,
+
   stat:{
     name: string;
   }
@@ -13,10 +16,14 @@ interface PokemonState{
     name: string;
   }
 }
+*/
 
 interface PokemonData{
   order:  number;
   name: string;
+  sprites:{
+    front_default:string;
+  }
 }
 
 interface PokemonParams{
@@ -26,17 +33,19 @@ interface PokemonParams{
 const Pokemon: React.FC = () =>{
   const {params} = useRouteMatch<PokemonParams>()
   const [pokemon, setPokemon] = useState<PokemonData | null>({} as PokemonData);
-  const [pokemonAttributes, setPokemonAttributes] = useState<PokemonState []>([])
+
 
   useEffect(() =>{
+
       api.get<PokemonData>(`/pokemon/${params.id}/`).then(response =>{
+
         setPokemon(response.data)
       })
 
-      api.get(`/pokemon/${params.id}/`).then(resposta =>{
-        setPokemonAttributes(resposta.data)
+     // api.get(`/pokemon/${params.id}/`).then(resposta =>{
+       // setPokemonAttributes(resposta.data)
 
-      })
+      // })
 
 
   },[params.id])
@@ -49,14 +58,15 @@ const Pokemon: React.FC = () =>{
         {pokemon && (
         <PokemonContent>
           <span> #{pokemon.order} </span>
-          <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${String(pokemon.order)}.png`} alt=" pokemon" />
+          {get(pokemon,'sprites.front_default',false ) ? (
+            <img src={pokemon.sprites.front_default} alt={pokemon.name} />
+          ):(
+            <FaGhost size={30} color="#fff" />
+          )}
           <h2> {pokemon.name}</h2>
           <strong> Grass </strong>
-
-
-
         </PokemonContent>
-        )}
+      )}
       </Container>
     </>
   )
